@@ -151,14 +151,14 @@ export function ColorDetailClient({ hex }: ColorDetailClientProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
               {[
                 { label: 'HEX Code', val: color.hex },
                 { label: 'RGB Values', val: `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}` },
                 { label: 'HSL Values', val: `${color.hsl.h}°, ${color.hsl.s}%, ${color.hsl.l}%` },
                 { label: 'HSV Values', val: `${color.hsv.h}°, ${color.hsv.s}%, ${color.hsv.v}%` },
                 { label: 'CMYK Values', val: `${color.cmyk.c}%, ${color.cmyk.m}%, ${color.cmyk.y}%, ${color.cmyk.k}%` },
-                { label: 'Relative Luminance', val: `${Math.round(color.luminance * 100)}%` },
+                { label: 'Luminance', val: `${Math.round(color.luminance * 100)}%` },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -167,13 +167,13 @@ export function ColorDetailClient({ hex }: ColorDetailClientProps) {
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                     {item.label}
                   </span>
-                  <div className="flex items-center justify-between mt-1">
+                  <div className="flex items-center justify-between mt-1 gap-1">
                     <span className="text-xs font-mono font-bold text-slate-800 dark:text-slate-200 truncate">
                       {item.val}
                     </span>
                     <button
                       onClick={() => handleCopy(item.val, item.label)}
-                      className="p-1 text-slate-400 hover:text-indigo-600 transition-colors"
+                      className="p-1 text-slate-400 hover:text-indigo-600 transition-colors shrink-0"
                       title={`Copy ${item.label}`}
                     >
                       {copiedKey === item.label ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
@@ -247,15 +247,15 @@ export function ColorDetailClient({ hex }: ColorDetailClientProps) {
           <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">
             Tints (Lightening)
           </span>
-          <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-2">
             {tints.map((item, idx) => (
               <button
                 key={item.hex + idx}
                 onClick={() => handleCopy(item.hex, `tint-${idx}`)}
-                className="group flex flex-col items-center gap-1.5"
+                className="group flex flex-col items-center gap-1.5 p-1 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 <div
-                  className="w-full h-14 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50 transition-transform group-hover:scale-105"
+                  className="w-full h-12 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50 transition-transform group-hover:scale-105"
                   style={{ backgroundColor: item.hex }}
                 />
                 <span className="font-mono text-[10px] font-semibold text-slate-600 dark:text-slate-400">
@@ -271,15 +271,15 @@ export function ColorDetailClient({ hex }: ColorDetailClientProps) {
           <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">
             Shades (Darkening)
           </span>
-          <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-2">
             {shades.map((item, idx) => (
               <button
                 key={item.hex + idx}
                 onClick={() => handleCopy(item.hex, `shade-${idx}`)}
-                className="group flex flex-col items-center gap-1.5"
+                className="group flex flex-col items-center gap-1.5 p-1 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 <div
-                  className="w-full h-14 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50 transition-transform group-hover:scale-105"
+                  className="w-full h-12 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50 transition-transform group-hover:scale-105"
                   style={{ backgroundColor: item.hex }}
                 />
                 <span className="font-mono text-[10px] font-semibold text-slate-600 dark:text-slate-400">
@@ -302,7 +302,7 @@ export function ColorDetailClient({ hex }: ColorDetailClientProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {harmonies.map((scheme) => (
             <div
               key={scheme.type}
@@ -351,7 +351,7 @@ export function ColorDetailClient({ hex }: ColorDetailClientProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
             { title: 'CSS Variables', code: cssSnippets.cssVars },
             { title: 'Tailwind CSS Class', code: cssSnippets.tailwind },
@@ -362,7 +362,7 @@ export function ColorDetailClient({ hex }: ColorDetailClientProps) {
           ].map((item) => (
             <div
               key={item.title}
-              className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-2"
+              className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-2 flex flex-col justify-between"
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
@@ -379,6 +379,50 @@ export function ColorDetailClient({ hex }: ColorDetailClientProps) {
                 {item.code}
               </pre>
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Explore More Curated Colors Grid */}
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 md:p-8 shadow-sm space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
+              Explore Popular Color Pages
+            </h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              Browse other curated trending colors and design palettes.
+            </p>
+          </div>
+          <Link
+            href="/#popular"
+            className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
+          >
+            <span>View All</span>
+            <ExternalLink className="w-3 h-3" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          {POPULAR_CURATED_COLORS.slice(0, 12).map((item) => (
+            <Link
+              key={item.hex}
+              href={`/color/${item.hex.replace('#', '').toLowerCase()}`}
+              className="p-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:border-indigo-400 transition-all group flex flex-col items-center gap-2"
+            >
+              <div
+                className="w-full h-12 rounded-xl shadow-sm border border-slate-200/60 dark:border-slate-700/60 group-hover:scale-105 transition-transform"
+                style={{ backgroundColor: item.hex }}
+              />
+              <div className="text-center w-full truncate">
+                <div className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">
+                  {item.name}
+                </div>
+                <div className="text-[10px] font-mono text-slate-500">
+                  {item.hex}
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

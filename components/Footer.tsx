@@ -23,7 +23,7 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white">
                 <Palette className="w-4 h-4" />
               </div>
-              <span className="text-lg font-bold text-white tracking-tight">Color Tools</span>
+              <span className="text-lg font-bold text-white tracking-tight">Colour Lab</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
               Fast, modern color utility for UI designers and web developers. Convert formats, build color palettes, inspect contrast, and export production-ready CSS snippets.

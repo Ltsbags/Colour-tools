@@ -86,7 +86,7 @@ export function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="text-base font-extrabold tracking-tight leading-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-              Color Tools
+              Colour Lab
             </span>
             <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 tracking-wider uppercase">
               Dev & Design Hub

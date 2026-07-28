@@ -4,7 +4,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Color Tools & Converter - Fast HEX, RGB, HSL & Palette Generator',
+  title: 'Colour Lab - Fast HEX, RGB, HSL & Palette Generator',
   description: 'Fast, modern color utility for designers and developers to convert color formats, generate palettes, explore shades, and copy CSS code.',
 };
 
