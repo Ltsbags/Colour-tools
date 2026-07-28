@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Palette, Github, Heart, Shield, FileText, Mail, Info, Check } from 'lucide-react';
 import { AdSensePlaceholder } from './AdSensePlaceholder';
+import { Logo } from './Logo';
 
 export function Footer() {
   const [modalType, setModalType] = useState<'privacy' | 'disclaimer' | 'about' | 'contact' | null>(null);
@@ -19,12 +20,7 @@ export function Footer() {
           
           {/* Col 1: Brand */}
           <div className="space-y-4 md:col-span-1">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white">
-                <Palette className="w-4 h-4" />
-              </div>
-              <span className="text-lg font-bold text-white tracking-tight">Colour Lab</span>
-            </div>
+            <Logo size="md" />
             <p className="text-xs text-slate-400 leading-relaxed">
               Fast, modern color utility for UI designers and web developers. Convert formats, build color palettes, inspect contrast, and export production-ready CSS snippets.
             </p>

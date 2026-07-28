@@ -16,6 +16,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { getRandomHex, COLOR_NAMES, sanitizeHex, isValidHex } from '@/lib/color-utils';
+import { Logo } from '@/components/Logo';
 
 export function Navbar() {
   const router = useRouter();
@@ -75,24 +76,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         
         {/* Brand Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 font-bold text-slate-900 dark:text-white hover:opacity-90 transition-opacity"
-        >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-violet-500 p-0.5 shadow-sm flex items-center justify-center">
-            <div className="w-full h-full bg-white dark:bg-slate-950 rounded-[10px] flex items-center justify-center">
-              <Palette className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-base font-extrabold tracking-tight leading-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-              Colour Lab
-            </span>
-            <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 tracking-wider uppercase">
-              Dev & Design Hub
-            </span>
-          </div>
-        </Link>
+        <Logo size="md" />
 
         {/* Global Instant Search Bar */}
         <div ref={searchRef} className="relative flex-1 max-w-md hidden md:block">
