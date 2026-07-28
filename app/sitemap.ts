@@ -1,11 +1,20 @@
 import { MetadataRoute } from 'next';
-import { POPULAR_CURATED_COLORS, sanitizeHex } from '@/lib/color-utils';
+import { COLOR_NAMES, POPULAR_CURATED_COLORS, sanitizeHex } from '@/lib/color-utils';
 
 const BASE_URL = process.env.APP_URL || 'https://colortools.dev';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const colorRoutes = POPULAR_CURATED_COLORS.map((c) => {
+  const hexMap = new Map<string, string>();
+
+  // Collect all unique color hexes
+  [...POPULAR_CURATED_COLORS, ...COLOR_NAMES].forEach((c) => {
     const cleanHex = sanitizeHex(c.hex).toLowerCase();
+    if (!hexMap.has(cleanHex)) {
+      hexMap.set(cleanHex, cleanHex);
+    }
+  });
+
+  const colorRoutes = Array.from(hexMap.keys()).map((cleanHex) => {
     return {
       url: `${BASE_URL}/color/${cleanHex}`,
       lastModified: new Date(),
