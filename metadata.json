@@ -1,0 +1,6 @@
+{
+  "name": "Color Tools & Converter",
+  "description": "Fast, modern color utility for designers and developers to convert color formats, generate palettes, explore shades, and copy CSS code.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
